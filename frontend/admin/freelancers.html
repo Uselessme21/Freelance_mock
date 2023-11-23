@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancers</title>
+    <style>
+        *,body,html{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+.filter-sort-search {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-sort-search select,
+        .filter-sort-search input {
+            padding: 8px;
+            margin-right: 10px;
+        }
+
+        .filter-sort-search button {
+            padding: 8px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+.info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.info h2 {
+    color: #333;
+}
+
+.freelancers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+.freelancer-card {
+    background-color: white;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.freelancer-card img {
+    max-width: 100%;
+    /* border-radius: 50%; to make it circular, adjust as needed */
+    margin-bottom: 10px;
+}
+
+.freelancer-card h3 {
+    color: #333;
+}
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.pagination button:hover {
+    background-color: #45a049;
+}
+
+.pagination button.active {
+    background-color: #415c43;
+}
+
+
+
+    </style>
+</head>
+<body>
+    
+<nav>
+    <a href="./reports.html">Reports</a>
+</nav>
+<div class="filter-sort-search">
+    <div>
+        <label for="filterSelect">Filter by Profession:</label>
+        <select id="filterSelect">
+           
+        </select>
+    </div>
+    <div>
+        <label for="sortSelect">Sort by Hourly Rate:</label>
+        <select id="sortSelect">
+            
+        </select>
+    </div>
+    <div>
+        <label for="searchInput">Search by Name:</label>
+        <input type="text" id="searchInput" placeholder="Enter name...">
+        <button onclick="applyFiltersAndSort()">Apply</button>
+    </div>
+</div>
+<div class="info">
+    <h2>Freelancers List</h2>
+</div>
+
+<div class="freelancers-container" id="freelancersContainer">
+    <!-- dynamically added here -->
+</div>
+<div class="pagination" id="paginationContainer">
+    <!-- Pagination buttons -->
+</div>
+</body>
+</html>
+<script src="./js/freelance.js"></script>

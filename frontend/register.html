@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Freelancer</title>
+    <style>
+        *,body,html{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        /* Nav */
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+/* Info section */
+.info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.info h2 {
+    color: #333;
+}
+/*  */
+        #registrationForm {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+     <nav>
+        <a href="./admin/login.html">Login as Admin</a>
+     </nav>
+
+     <div class="info">
+        <h2>Register for Freelancers</h2>
+     </div>
+    <form id="registrationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+    
+        <label for="profile_picture">Profile Picture (URL):</label>
+        <input type="url" id="profile_picture" name="profile_picture" required><br>
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+    
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+    
+        <label for="profession">Profession:</label>
+        <select id="profession" name="profession">
+            <option value="Student">Student</option>
+            <option value="Web Developer">Web Developer</option>
+            <option value="Graphic Designer">Graphic Designer</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
+        </select><br>
+    
+        <label for="skills">Skills (Select multiple):</label>
+        <select  id="skills" name="skills" multiple>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Figma">Figma</option>
+            <option value="Java">Java</option>
+            <option value="Python">Python</option>
+            <option value="PHP">PHP</option>
+            <option value="ReactJS">ReactJS</option>
+            <option value="NextJS">NextJS</option>
+        </select><br>
+    
+        <label for="hourly_rate">Hourly Rate:</label>
+        <input type="number" id="hourly_rate" name="hourly_rate" required><br>
+    
+        <button type="submit">Submit</button>
+    </form>
+    
+
+</body>
+</html>
+<script>
+    const form = document.getElementById('registrationForm');
+form.addEventListener('submit', (event) => {
+    event.preventDefault(); 
+
+    const formData = new FormData(form);
+
+    const skills = Array.from(formData.getAll('skills')).map(skill => skill.trim());
+    // console.log(skills);
+
+    const formDataObject = Object.fromEntries(formData);
+    formDataObject.skills = skills;
+    formDataObject.isBooked = false;
+    console.log(formDataObject);
+
+    senddata(formDataObject);
+});
+
+function senddata(formdata) {
+    fetch('http://localhost:3000/freelancers', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...formdata }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            alert('Successfully registered.');
+            console.log(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+</script>

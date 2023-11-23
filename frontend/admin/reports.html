@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <style>
+         *,body,html{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+<h1>Reports</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Total Registered Freelancers</th>
+            <th>Number of Freelancers per Profession</th>
+            <th>Average Hourly Rate</th>
+            <th>Number of Booked Freelancers</th>
+            <th>Number of Available Freelancers</th>
+        </tr>
+    </thead>
+    <tbody id="reportsBody">
+        <!-- Reports data will be dynamically added here using JavaScript -->
+    </tbody>
+</table>
+
+</body>
+</html>
+<script>
+    let token=localStorage.getItem('reqtoken')
+    if(!token){
+        window.location.href='./login.html'
+    }
+
+let freelancersData = []; 
+
+// Function to fetch freelancers data and update reports
+function fetchFreelancers() {
+  fetch('http://localhost:3000/freelancers')
+        .then(response => response.json())
+        .then(initialData => {
+            freelancersData = initialData;
+            updateReports();
+        })
+        .catch(error => console.error('Error fetching freelancers:', error));
+
+}
+
+// Function to update reports
+function updateReports() {
+    const reportsBody = document.getElementById('reportsBody');
+    reportsBody.innerHTML = '';
+
+    // Calculate and display reports
+    const totalFreelancers = freelancersData.length;
+    const professionsCount = countFreelancersPerProfession();
+    const averageHourlyRate = calculateAverageHourlyRate();
+    const bookedFreelancers = countBookedFreelancers();
+    const availableFreelancers = totalFreelancers - bookedFreelancers;
+
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `<td>${totalFreelancers}</td>
+                        <td>${JSON.stringify(professionsCount)}</td>
+                        <td>${averageHourlyRate.toFixed(2)}</td>
+                        <td>${bookedFreelancers}</td>
+                        <td>${availableFreelancers}</td>`;
+
+    reportsBody.appendChild(newRow);
+}
+
+// Function to count freelancers per profession
+function countFreelancersPerProfession() {
+    const professionsCount = {};
+
+    freelancersData.forEach(freelancer => {
+        if (professionsCount[freelancer.profession]) {
+            professionsCount[freelancer.profession]++;
+        } else {
+            professionsCount[freelancer.profession] = 1;
+        }
+    });
+
+    return professionsCount;
+}
+
+// Function to calculate average hourly rate
+function calculateAverageHourlyRate() {
+    const totalHourlyRate = freelancersData.reduce((sum, freelancer) => sum + freelancer.hourly_rate, 0);
+    return totalHourlyRate / freelancersData.length;
+}
+
+// Function to count booked freelancers
+function countBookedFreelancers() {
+    return freelancersData.filter(freelancer => freelancer.isBooked).length;
+}
+
+// Initial fetch of freelancers data
+fetchFreelancers();
+
+</script>
