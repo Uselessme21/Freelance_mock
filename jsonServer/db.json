@@ -1,0 +1,74 @@
+{
+  "freelancers": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "password",
+      "profession": "Web Developer",
+      "skills": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "hourly_rate": 25,
+      "profile_picture": "profile1.jpg",
+      "isBooked": true
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "password": "password",
+      "profession": "Graphic Designer",
+      "skills": [
+        "Photoshop",
+        "Illustrator"
+      ],
+      "hourly_rate": 30,
+      "profile_picture": "profile2.jpg",
+      "isBooked": true
+    },
+    {
+      "name": "Nrupul dev",
+      "profile_picture": "https://www.viralnovelty.net/wp-content/uploads/2016/02/o-OLD-PEOPLE-SMILING-facebook.jpg",
+      "email": "eve.holt@reqres.in",
+      "password": "qq",
+      "profession": "Frontend Developer",
+      "skills": [
+        "HTML",
+        "CSS",
+        "Javascript"
+      ],
+      "hourly_rate": 239,
+      "isBooked": true,
+      "id": 3
+    },
+    {
+      "name": "Nrupul dev",
+      "profile_picture": "https://www.viralnovelty.net/wp-content/uploads/2016/02/o-OLD-PEOPLE-SMILING-facebook.jpg",
+      "email": "eve.holt@reqres.in",
+      "password": "123",
+      "profession": "Web Developer",
+      "skills": [
+        "HTML"
+      ],
+      "hourly_rate": "123",
+      "isBooked": true,
+      "id": 5
+    },
+    {
+      "name": "Nrupul dev",
+      "profile_picture": "https://www.viralnovelty.net/wp-content/uploads/2016/02/o-OLD-PEOPLE-SMILING-facebook.jpg",
+      "email": "eve.holt@reqres.in",
+      "password": "123",
+      "profession": "Web Developer",
+      "skills": [
+        "HTML"
+      ],
+      "hourly_rate": "12",
+      "isBooked": false,
+      "id": 6
+    }
+  ]
+}
