@@ -9,7 +9,7 @@ if(!token){
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    fetch('http://localhost:3000/freelancers')
+    fetch('https://nervous-calf-earrings.cyclic.app/freelancers')
         .then(response => response.json())
         .then(initialData => {
             data = initialData;
@@ -217,7 +217,7 @@ function promptFreelancerInfo(freelancer) {
 
 // Helper function to update the freelancer's booking status in the JSON server
 function updateFreelancerStatus(freelancerId, isBooked) {
-    fetch(`http://localhost:3000/freelancers/${freelancerId}`, {
+    fetch(`https://nervous-calf-earrings.cyclic.app/freelancers/${freelancerId}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -231,7 +231,7 @@ function updateFreelancerStatus(freelancerId, isBooked) {
 
 // Helper function to delete the freelancer entry from the JSON server
 function deleteFreelancerEntry(freelancerId) {
-    fetch(`http://localhost:3000/freelancers/${freelancerId}`, {
+    fetch(`https://nervous-calf-earrings.cyclic.app/freelancers/${freelancerId}`, {
         method: 'DELETE',
     })
     .then(response => response.json())
@@ -241,7 +241,7 @@ function deleteFreelancerEntry(freelancerId) {
 
 // Helper function to update the freelancer's information in the JSON server
 function updateFreelancerEntry(freelancerId, updatedFreelancer) {
-    fetch(`http://localhost:3000/freelancers/${freelancerId}`, {
+    fetch(`https://nervous-calf-earrings.cyclic.app/freelancers/${freelancerId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
