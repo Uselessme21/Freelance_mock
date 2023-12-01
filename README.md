@@ -1,6 +1,6 @@
 # Freelance_mock_backend
 
-[json server](https://nervous-calf-earrings.cyclic.app/)
+[json server](https://freelance-cff9.onrender.com/freelancers)
 
 [web app](https://dashing-biscuit-c30c4f.netlify.app/)
 
